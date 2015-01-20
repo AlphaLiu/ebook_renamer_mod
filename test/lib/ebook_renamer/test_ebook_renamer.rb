@@ -16,6 +16,7 @@ describe EbookRenamer do
     end
   end
 
+
   context "#meta_to_hash" do
     it "returns empty hash" do
       meta_to_hash(nil).must_be_empty
@@ -83,6 +84,20 @@ describe EbookRenamer do
                               "author",
                               "page count"]).must_equal "The Firm:John Grisham:399"
       end
+    end
+  end
+
+  context "#test chinese meta data " do
+		let(:three) do
+			 meta("./test/fixtures/ebooks/demo3.mobi")
+		end
+    it "returns author 刘慈欣" do
+      my_meta_hash = meta_to_hash(three)
+			my_meta_hash["author(s)"].must_equal "刘慈欣"
+    end
+    it "returns title 白垩纪往事" do
+      my_meta_hash = meta_to_hash(three)
+			my_meta_hash["title"].must_equal "白垩纪往事"
     end
   end
 end
