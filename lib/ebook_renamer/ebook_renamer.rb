@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module EbookRenamer
   # Extract meta data from the input file using the ebook-meta tool
   #

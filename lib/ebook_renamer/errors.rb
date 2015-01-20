@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module EbookRenamer
   module Errors
     EbookMetaNotInstall = Class.new(StandardError)

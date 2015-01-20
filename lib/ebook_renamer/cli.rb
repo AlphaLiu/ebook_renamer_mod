@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module EbookRenamer
   class CLI < Thor
     desc "rename", "Rename multiple ebook files (pdf,epub,mobi) from a given directory"
