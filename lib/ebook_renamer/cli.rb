@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 module EbookRenamer
   class CLI < Thor
-    desc "rename", "Rename multiple ebook files (pdf,epub,mobi) from a given directory"
+    desc "rename", "Rename multiple ebook files (pdf,epub,mobi,azw,azw3) from a given directory"
     method_option *AgileUtils::Options::BASE_DIR
     method_option *AgileUtils::Options::RECURSIVE
     method_option :sep_string,
@@ -27,7 +27,7 @@ module EbookRenamer
     def rename
       opts = options.symbolize_keys
       # Explicitly add the :exts options
-      opts[:exts] = %w[pdf epub mobi]
+      opts[:exts] = %w[pdf epub mobi azw azw3]
       if opts[:version]
         puts "You are using EbookRenamer version #{EbookRenamer::VERSION}"
         exit
