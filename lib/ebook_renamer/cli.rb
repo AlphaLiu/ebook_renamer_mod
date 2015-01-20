@@ -78,6 +78,8 @@ Rename multiple ebook files (pdf,epub,mobi) from a given directory
         puts "-----------------------------------------------------------"
       end
 
+			puts "hellll"
+
       FileUtils.chdir(options[:base_dir])
       input_files.each_with_index do |file, index|
         input_file = File.expand_path(file)
@@ -101,6 +103,9 @@ Rename multiple ebook files (pdf,epub,mobi) from a given directory
       else
         output_file = compute_name(input_file, meta_hash, options)
       end
+
+			puts "now output_file is #{output_file}"
+
       rename_if_not_the_same(input_file, output_file, index:  index,
                                                       total:  total,
                                                       commit: options[:commit])

@@ -67,14 +67,16 @@ module EbookRenamer
     sep_char = args[:sep_char]
 
     # Note: only show if we have the value for title
-    result = []
-    keys.each do |key|
-      value = meta_hash.fetch(key, nil)
-      # Note: don't add 'Author(s)' => 'Unknown' to keep the result clean
-      if value && value.downcase != "unknown"
-        result << meta_hash[key]
-      end
-    end
-    result.join(sep_char)
+    #result = []
+    #keys.each do |key|
+      #value = meta_hash.fetch(key, nil)
+      ## Note: don't add 'Author(s)' => 'Unknown' to keep the result clean
+      #if value && value.downcase != "unknown"
+        #result << meta_hash[key]
+      #end
+    #end
+    #result.join(sep_char)
+
+		"[#{meta_hash['author(s)']}][#{meta_hash['title']}]"
   end
 end
