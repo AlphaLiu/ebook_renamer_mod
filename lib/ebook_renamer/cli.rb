@@ -56,7 +56,7 @@ Options:
                                          # Default: --no-commit
   -v, [--version], [--no-version]        # Display version information
 
-Rename multiple ebook files (pdf,epub,mobi) from a given directory
+Rename multiple ebook files (pdf,epub,mobi,azw,azw3) from a given directory
 
       EOS
     end
@@ -78,8 +78,6 @@ Rename multiple ebook files (pdf,epub,mobi) from a given directory
         puts "-----------------------------------------------------------"
       end
 
-			puts "hellll"
-
       FileUtils.chdir(options[:base_dir])
       input_files.each_with_index do |file, index|
         input_file = File.expand_path(file)
@@ -95,16 +93,14 @@ Rename multiple ebook files (pdf,epub,mobi) from a given directory
     end
 
     def compare_and_rename(input_file, meta_hash, options, index, total)
-      if identical_name?(input_file, meta_hash)
-        base_name = File.basename(input_file, ".*")
-        name = downcase_or_capitalize(base_name, options)
-        name = "#{File.dirname(input_file)}/#{name}#{File.extname(input_file)}"
-        output_file = File.expand_path(name)
-      else
+      #if identical_name?(input_file, meta_hash)
+        #base_name = File.basename(input_file, ".*")
+        #name = downcase_or_capitalize(base_name, options)
+        #name = "#{File.dirname(input_file)}/#{name}#{File.extname(input_file)}"
+        #output_file = File.expand_path(name)
+      #else
         output_file = compute_name(input_file, meta_hash, options)
-      end
-
-			puts "now output_file is #{output_file}"
+      #end
 
       rename_if_not_the_same(input_file, output_file, index:  index,
                                                       total:  total,
@@ -141,7 +137,8 @@ Rename multiple ebook files (pdf,epub,mobi) from a given directory
     def compute_name(input_file, meta_hash, options)
       extension = File.extname(input_file)
       name = formatted_name(meta_hash, sep_char: " by ")
-      name = FilenameCleaner.sanitize(name, options[:sep_string], false)
+
+      #name = FilenameCleaner.sanitize(name, options[:sep_string], false)
       name = downcase_or_capitalize(name, options)
       name = "#{File.dirname(input_file)}/#{name}#{extension}"
       File.expand_path(name)
