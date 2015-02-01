@@ -65,7 +65,6 @@ module EbookRenamer
 
     keys = args[:keys]
     sep_char = args[:sep_char]
-
     # Note: only show if we have the value for title
     #result = []
     #keys.each do |key|
@@ -77,6 +76,9 @@ module EbookRenamer
     #end
     #result.join(sep_char)
 
-		"[#{meta_hash['author(s)']}][#{meta_hash['title']}]"
+		"[#{clean_name(meta_hash['author(s)']).gsub(/•/, '·')}][#{clean_name(meta_hash['title'])}]"
   end
+	def clean_name(name)
+		name.gsub(/[:,，：\/、]/, '_')
+	end
 end

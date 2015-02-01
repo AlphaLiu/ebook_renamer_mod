@@ -99,7 +99,7 @@ Rename multiple ebook files (pdf,epub,mobi,azw,azw3) from a given directory
         #name = "#{File.dirname(input_file)}/#{name}#{File.extname(input_file)}"
         #output_file = File.expand_path(name)
       #else
-        output_file = compute_name(input_file, meta_hash, options)
+			output_file = compute_name(input_file, meta_hash, options).gsub(/\?/, '')
       #end
 
       rename_if_not_the_same(input_file, output_file, index:  index,
